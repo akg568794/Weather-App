@@ -15,8 +15,10 @@ const errorImage = document.querySelector('[data-errorImg]');
 let currentTab=userTab;
 const API_KEY = "168771779c71f3d64106d8a88376808a";
 currentTab.classList.add("currentTab")
+getFromSessionStorage();
 
 function switchTab(clickedTab){
+    notFound.classList.remove("active");
     if(currentTab!=clickedTab){
         currentTab.classList.remove("currentTab");
         currentTab=clickedTab;
@@ -31,6 +33,7 @@ function switchTab(clickedTab){
         searchForm.classList.remove("active");
         userInfoContainer.classList.remove("active");
         // getfromSessionStorage.classList.remove("active");
+        // grantAccessContainer.classList.add("active");
         getFromSessionStorage();
 
     }
@@ -69,7 +72,7 @@ async function fetchWeatherInfo(coordinates) {
 
     // loading 
     loadingScreen.classList.add('active');
-    notFound.classList.remove('active');
+    // notFound.classList.remove('active');
 
     // try - catch Block
     try {
@@ -122,6 +125,7 @@ function getLocation(){
     }
     else{
         alert("Geolocation is not supported by this browser");
+        grantAccessButton.style.display = 'none';
     }
 }
 
